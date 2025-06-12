@@ -1,0 +1,38 @@
+
+h1 {
+    font-style: oblique;
+    color: white;
+    text-shadow:blue 1px 0 10px;
+}
+
+h2 {
+    background-color: aqua;
+}
+
+h3 {
+    color: green;
+    background: linear-gradient(to right, white, #e0f7f1);
+}
+
+div#zentai {
+  display: grid;
+  grid-template-columns: 1fr; /* 1列 */
+  width: 800px;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+div#zentai > div {
+	padding: 5px;;
+	background-color: #e0f7f1;
+}
+
+a {
+  color: #020066;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
