@@ -2,7 +2,7 @@ let heikin = 3.5;
 console.log(heikin);        // 正しくは heikin
 
 // (2) 関数名のつづり間違い      → エラー発生
-let h = Math.froor(heikin); // 正しくは floor
+let h = Math.floor(heikin); // 正しくは floor
 
 // (3) 存在しない配列要素       → undefined　（エラーにならない）
 let ary = ['a', 'b', 'c'];
