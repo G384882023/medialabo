@@ -1,5 +1,5 @@
 let heikin = 3.5;
-console.log(Heikin);        // 正しくは heikin
+console.log(heikin);        // 正しくは heikin
 
 // (2) 関数名のつづり間違い      → エラー発生
 let h = Math.froor(heikin); // 正しくは floor
