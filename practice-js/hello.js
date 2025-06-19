@@ -1,1 +1,1 @@
-console.leg('こんにちは');
+console.log('こんにちは');
