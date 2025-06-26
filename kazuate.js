@@ -16,7 +16,7 @@ function hantei() {
     document.querySelector('#kaisu').textContent = kaisu;
   // 将来ここでは 4 ではなくテキストボックスに指定された数値を yoso に代入する
   let yoso = document.querySelector('input[name="setumei"]');
-  let yosotext = parseInt(yoso.value);
+  let yosotext = Number(yoso.value);
   document.querySelector('#answer').textContent = yosotext;
 
     console.log(kaisu+'回目の予想: '+yoso);
