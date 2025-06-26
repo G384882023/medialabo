@@ -1,4 +1,11 @@
+b = document.querySelector('button#calc');
+b.addEventListener('click',hyouji);
 
+function hyouji(){
+  let kensakunaiyou = document.querySelector('input[name="kensaku"]');
+  let kensaku = kensakunaiyou.value;
+  console.log("検索キー:"+kensaku);
+};
 // 課題3-2 のプログラムはこの関数の中に記述すること
 function print(data) {
   let shops = data.results.shop;
