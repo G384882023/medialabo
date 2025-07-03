@@ -29,7 +29,6 @@ function show(){
 		li.textContent = g.name;
 		ul.insertAdjacentElement('beforeend', li);
 	}
-	let b = document.querySelector('button#show');
-	b.addEventListener('click', show);
-
 }
+let b = document.querySelector('button#show');
+b.addEventListener('click', show);
