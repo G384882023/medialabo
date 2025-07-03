@@ -29,9 +29,79 @@ function print(data) {
 
 
 // 課題5-1 の関数 printDom() はここに記述すること
-function printDom(data) {
+/* function printDom(data) {
+  let resultDiv = document.createElement('div');
+  resultDiv.setAttribute('id', 'result');
 
-}
+  resultDiv.id = 'zentai';
+
+  document.body.insertAdjacentElement('beforeend', resultDiv);
+
+  let shops = data.results.shop;
+  for (let shop of shops) {
+    // 店舗カード div.shop-card
+    let shopCard = document.createElement('div');
+    shopCard.classList.add('shop-card');
+
+    // 画像 img.shop-img
+    let img = document.createElement('img');
+    img.classList.add('shop-img');
+    img.setAttribute('src', shop.photo.pc.m);   // 中サイズ画像を使用
+    img.setAttribute('alt', shop.name);
+    shopCard.insertAdjacentElement('beforeend', img);
+
+    // 情報 div.shop-info
+    let info = document.createElement('div');
+    info.classList.add('shop-info');
+
+    // 店名 h3
+    let h3 = document.createElement('h3');
+    h3.textContent = shop.name;
+    info.insertAdjacentElement('beforeend', h3);
+
+    // 住所
+    let address = document.createElement('p');
+    address.innerHTML = "<strong>住所:</strong> " + shop.address;
+    info.insertAdjacentElement('beforeend', address);
+
+    // 予算
+    let budget = document.createElement('p');
+    budget.innerHTML = "<strong>予算:</strong> " + shop.budget.name;
+    info.insertAdjacentElement('beforeend', budget);
+
+    // キャッチコピー
+    let catchcopy = document.createElement('p');
+    catchcopy.innerHTML = "<strong>キャッチコピー:</strong> " + shop.catch;
+    info.insertAdjacentElement('beforeend', catchcopy);
+
+    // ジャンル
+    let genre = document.createElement('p');
+    genre.innerHTML = "<strong>ジャンル:</strong> " + shop.genre.name;
+    info.insertAdjacentElement('beforeend', genre);
+
+    // 営業時間
+    let open = document.createElement('p');
+    open.innerHTML = "<strong>営業日時:</strong> " + shop.open;
+    info.insertAdjacentElement('beforeend', open);
+
+    // アクセス
+    let access = document.createElement('p');
+    access.innerHTML = "<strong>アクセス:</strong> " + shop.access;
+    info.insertAdjacentElement('beforeend', access);
+
+    // 最寄駅
+    let station = document.createElement('p');
+    station.innerHTML = "<strong>最寄駅:</strong> " + shop.station_name;
+    info.insertAdjacentElement('beforeend', station);
+
+    // infoをshopCardに追加
+    shopCard.insertAdjacentElement('beforeend', info);
+
+    // shopCardをresultDivに追加
+    resultDiv.insertAdjacentElement('beforeend', shopCard);
+  }
+} */
+
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
 

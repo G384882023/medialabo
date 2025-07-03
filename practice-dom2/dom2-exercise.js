@@ -29,6 +29,8 @@ function show(){
 		li.textContent = g.name;
 		ul.insertAdjacentElement('beforeend', li);
 	}
+	let h2dept = document.querySelector('h2#dept');
+	h2dept.insertAdjacentElement('afterend', ul);
 }
 let b = document.querySelector('button#show');
 b.addEventListener('click', show);
