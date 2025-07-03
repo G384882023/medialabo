@@ -1,3 +1,6 @@
+    b = document.querySelector('button#henkou');
+    b.addEventListener('click', changeDom);
+
 changeDom(){
     let l = document.createElement('li'); //ヨットを追加する
     l.textContent = 'ヨット';
