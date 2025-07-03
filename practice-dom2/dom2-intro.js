@@ -1,4 +1,4 @@
-changeDom(){
+function changeDom(){
     //ヨットを追加する
     let l = document.createElement('li');
     let u = document.querySelector('ul#kazoeuta');
@@ -14,14 +14,14 @@ changeDom(){
     a.textContent = '拓殖大学HP'; // 要素 a のテキスト設定
     a.setAttribute('href', 'https://www.takushoku-u.ac.jp'); // 属性 href の設定
     let p = document.querySelector('p#takudai');
-    onabort.insertAdjacentElement('afterend', a); // p の直後に a を追加
+    p.insertAdjacentElement('afterend', a); // p の直後に a を追加
 
     //「餅」を削除
     l = document.querySelector('li#mochi'); // 削除したい要素を検索
     l.remove();                             // 要素を削除
     //「ul"kassen」を削除                           
     u = document.querySelector('ul#kassen');
-    u,remove();
+    u.remove();
     
     //光の三原色追加
     u = document.createElement('ul'); //新規要素の作成
