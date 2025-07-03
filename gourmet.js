@@ -1,4 +1,4 @@
-b = document.querySelector('button#calc');
+let b = document.querySelector('button#calc');
 b.addEventListener('click',hyouji);
 
 function hyouji(){
@@ -101,8 +101,8 @@ function printDom(data) {
     resultDiv.insertAdjacentElement('beforeend', shopCard);
   }
 }
-let b = document.querySelector('button#calc');
-b.addEventListener('click', printDom);
+let btn = document.querySelector('button#calc');
+btn.addEventListener('click',printDom(data));
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
 
