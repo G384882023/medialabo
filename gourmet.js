@@ -29,7 +29,7 @@ function print(data) {
 
 
 // 課題5-1 の関数 printDom() はここに記述すること
-function printDom(data) {
+function printDom() {
   let resultDiv = document.createElement('div');
   resultDiv.setAttribute('id', 'result');
 
@@ -100,9 +100,12 @@ function printDom(data) {
     // shopCardをresultDivに追加
     resultDiv.insertAdjacentElement('beforeend', shopCard);
   }
+  let end = document.createElement('p');
+    end.textContent = "検索結果は以上です。";
+    resultDiv.insertAdjacentElement('beforeend', end);
 }
-let btn = document.querySelector('button#calc');
-btn.addEventListener('click',printDom(data));
+/*let btn = document.querySelector('button#calc');
+btn.addEventListener('click',printDom);*/
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
 
