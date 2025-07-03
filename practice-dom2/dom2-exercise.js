@@ -16,3 +16,20 @@ let gakka = [
 
 //////////////// ここから下にプログラムを書きたそう!
 
+function show(){
+	//h2の下に「八王子市館町」と、直接ではなくcampasオブジェクトから取得する
+	let l = document.querySelector('h2#addr');
+	let p = document.createElement('p');
+	p.textContent = campus.address;
+	l.insertAdjacentElement('afterend', p);
+
+	let ul = document.createElement('ul');
+	for (let g of gakka){
+		let li = document.createElement('li');
+		li.textContent = g.name;
+		ul.insertAdjacentElement('beforeend', li);
+	}
+	let b = document.querySelector('button#show');
+	b.addEventListener('click', show);
+
+}
