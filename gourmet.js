@@ -29,7 +29,7 @@ function print(data) {
 
 
 // 課題5-1 の関数 printDom() はここに記述すること
-/* function printDom(data) {
+function printDom(data) {
   let resultDiv = document.createElement('div');
   resultDiv.setAttribute('id', 'result');
 
@@ -100,8 +100,9 @@ function print(data) {
     // shopCardをresultDivに追加
     resultDiv.insertAdjacentElement('beforeend', shopCard);
   }
-} */
-
+}
+let b = document.querySelector('button#calc');
+b.addEventListener('click', printDom);
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
 
