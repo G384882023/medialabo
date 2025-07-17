@@ -1,11 +1,9 @@
-let b = document.querySelector('button#calc');
-b.addEventListener('click',hyouji);
-
 function hyouji(){
   let kensakunaiyou = document.querySelector('input[name="kensaku"]');
   let kensaku = kensakunaiyou.value;
   console.log("検索キー:"+kensaku);
 };
+
 // 課題3-2 のプログラムはこの関数の中に記述すること
 function print(data) {
   let shops = data.results.shop;
@@ -29,7 +27,13 @@ function print(data) {
 
 
 // 課題5-1 の関数 printDom() はここに記述すること
-function printDom() {
+function printDom(data) {
+  
+  let oldResult = document.getElementById('zentai');
+  if (oldResult) {
+    oldResult.remove();
+  }
+
   let resultDiv = document.createElement('div');
   resultDiv.setAttribute('id', 'result');
 
