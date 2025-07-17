@@ -1,9 +1,3 @@
-function hyouji(){
-  let kensakunaiyou = document.querySelector('input[name="kensaku"]');
-  let kensaku = kensakunaiyou.value;
-  console.log("検索キー:"+kensaku);
-};
-
 // 課題3-2 のプログラムはこの関数の中に記述すること
 function print(data) {
   let shops = data.results.shop;
@@ -28,7 +22,7 @@ function print(data) {
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
-  
+
   let oldResult = document.getElementById('zentai');
   if (oldResult) {
     oldResult.remove();
@@ -42,6 +36,7 @@ function printDom(data) {
   document.body.insertAdjacentElement('beforeend', resultDiv);
 
   let shops = data.results.shop;
+  let count = 1;
   for (let shop of shops) {
     // 店舗カード div.shop-card
     let shopCard = document.createElement('div');
@@ -103,7 +98,13 @@ function printDom(data) {
 
     // shopCardをresultDivに追加
     resultDiv.insertAdjacentElement('beforeend', shopCard);
+
+    count++;
   }
+  let countP = document.createElement('p');
+  countP.textContent = "検索結果 件数：" + (count - 1) + "件";
+  resultDiv.insertAdjacentElement('beforeend', countP);
+
   let end = document.createElement('p');
     end.textContent = "検索結果は以上です。";
     resultDiv.insertAdjacentElement('beforeend', end);
@@ -116,9 +117,27 @@ btn.addEventListener('click',sendRequest);
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
-  let kensaku = document.querySelector('input[name="kensaku"]').value;
-  // URL を設定
-    let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/G014.json';
+  let kensakunaiyou = document.querySelector('input[name="kensaku"]');
+  let kensaku = kensakunaiyou.value;
+  console.log("検索キー:"+kensaku);
+
+    let genreCode = getGenreCode(kensaku);
+
+    if (genreCode !== null) {
+      kensaku = genreCode;
+      document.getElementById('message').textContent = "";
+    }else{
+      let msgElem = document.getElementById('message');
+      let msg = "入力されたジャンルがありません。以下のジャンル、またはキーを入力してください。\n\n";
+      for (let genre in genreMap) {
+        msg += genre + " : " + genreMap[genre]+"\n";
+      }
+      msgElem.textContent = msg;
+      return; 
+    }
+
+    // URL を設定
+    let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/'+kensaku+'.json';
 
     // 通信開始
     axios.get(url)
@@ -126,6 +145,38 @@ function sendRequest() {
         .catch(showError)   // 通信失敗
         .then(finish);      // 通信の最後の処理
 }
+//検索を楽にするため、「カフェ」などの言葉をジャンルのキーに対応するためのオブジェクト
+
+function getGenreCode(kensaku) {
+  
+  if (genreMap[kensaku] !== undefined) {
+    return genreMap[kensaku];
+  } else {
+    return null;
+  }
+}
+
+const genreMap = {
+    "居酒屋": "G001",
+    "ダイニングバー": "G002",
+    "創作料理": "G003",
+    "和食": "G004",
+    "洋食": "G005",
+    "イタリアン": "G006",
+    "中華": "G007",
+    "焼肉": "G008",
+    "アジア": "G009",
+    "各国料理": "G010",
+    "カラオケ": "G011",
+    "バー": "G012",
+    "ラーメン": "G013",
+    "カフェ": "G014",
+    "スイーツ": "G014", 
+    "その他": "G015",
+    "お好み焼き": "G016",
+    "韓国": "G017"
+  };
+
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
@@ -150,10 +201,5 @@ function showError(err) {
 function finish() {
     console.log('Ajax 通信が終わりました');
 }
-
-////////////////////////////////////////
-// 以下はグルメのデータサンプル
-// 注意: 第5回までは以下を変更しないこと！
-// 注意2: 課題6-1 で以下をすべて削除すること
 
 

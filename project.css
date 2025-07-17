@@ -46,3 +46,9 @@ h2 {
     font-size: 1.2em;
     margin-bottom: 10px;
 }
+
+#message {
+  white-space: pre-wrap; 
+  color: black;
+  margin-top: 10px;
+}
