@@ -149,6 +149,7 @@ function sendRequest() {
         .catch(showError)   // 通信失敗
         .then(finish);      // 通信の最後の処理
 }
+
 //検索を楽にするため、「カフェ」などの言葉をジャンルのキーに対応するためのオブジェクトと機能
 
 function getGenreCode(kensaku) {
