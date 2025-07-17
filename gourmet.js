@@ -127,6 +127,10 @@ function sendRequest() {
       kensaku = genreCode;
       document.getElementById('message').textContent = "";
     }else{
+       let oldResult = document.getElementById('zentai');
+       if (oldResult) {
+        oldResult.remove();
+      }
       let msgElem = document.getElementById('message');
       let msg = "入力されたジャンルがありません。以下のジャンル、またはキーを入力してください。\n\n";
       for (let genre in genreMap) {
@@ -145,16 +149,27 @@ function sendRequest() {
         .catch(showError)   // 通信失敗
         .then(finish);      // 通信の最後の処理
 }
-//検索を楽にするため、「カフェ」などの言葉をジャンルのキーに対応するためのオブジェクト
+//検索を楽にするため、「カフェ」などの言葉をジャンルのキーに対応するためのオブジェクトと機能
 
 function getGenreCode(kensaku) {
-  
   if (genreMap[kensaku] !== undefined) {
     return genreMap[kensaku];
-  } else {
-    return null;
   }
+
+  let possibleCodes = [
+    "G001", "G002", "G003", "G004", "G005", "G006", "G007", "G008",
+    "G009", "G010", "G011", "G012", "G013", "G014", "G015", "G016", "G017"
+  ];
+
+  for (let i = 0; i < possibleCodes.length; i++) {
+    if (kensaku === possibleCodes[i]) {
+      return kensaku;
+    }
+  }
+
+  return null;
 }
+
 
 const genreMap = {
     "居酒屋": "G001",
