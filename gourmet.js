@@ -133,8 +133,8 @@ function sendRequest() {
       }
       let msgElem = document.getElementById('message');
       let msg = "入力されたジャンルがありません。以下のジャンル、またはキーを入力してください。\n\n";
-      for (let genre in genreMap) {
-        msg += genre + " : " + genreMap[genre]+"\n";
+      for (let i = 0; i < genreNames.length; i++) {
+        msg += genreNames[i] + " : " + genreKeys[i] + "\n";
       }
       msgElem.textContent = msg;
       return; 
@@ -150,20 +150,19 @@ function sendRequest() {
         .then(finish);      // 通信の最後の処理
 }
 
-//検索を楽にするため、「カフェ」などの言葉をジャンルのキーに対応するためのオブジェクトと機能
+//検索を楽にするため、「カフェ」などの言葉をジャンルのキーに対応するための配列と機能
 
 function getGenreCode(kensaku) {
-  if (genreMap[kensaku] !== undefined) {
-    return genreMap[kensaku];
+  // 名前で検索
+  for (let i = 0; i < genreNames.length; i++) {
+    if (kensaku === genreNames[i]) {
+      return genreKeys[i];
+    }
   }
 
-  let possibleCodes = [
-    "G001", "G002", "G003", "G004", "G005", "G006", "G007", "G008",
-    "G009", "G010", "G011", "G012", "G013", "G014", "G015", "G016", "G017"
-  ];
-
-  for (let i = 0; i < possibleCodes.length; i++) {
-    if (kensaku === possibleCodes[i]) {
+  // 直接コード検索
+  for (let i = 0; i < genreKeys.length; i++) {
+    if (kensaku === genreKeys[i]) {
       return kensaku;
     }
   }
@@ -172,25 +171,19 @@ function getGenreCode(kensaku) {
 }
 
 
-const genreMap = {
-    "居酒屋": "G001",
-    "ダイニングバー": "G002",
-    "創作料理": "G003",
-    "和食": "G004",
-    "洋食": "G005",
-    "イタリアン": "G006",
-    "中華": "G007",
-    "焼肉": "G008",
-    "アジア": "G009",
-    "各国料理": "G010",
-    "カラオケ": "G011",
-    "バー": "G012",
-    "ラーメン": "G013",
-    "カフェ": "G014", 
-    "その他": "G015",
-    "お好み焼き": "G016",
-    "韓国": "G017"
-  };
+const genreNames = [
+  "居酒屋", "ダイニングバー", "創作料理", "和食", "洋食",
+  "イタリアン", "中華", "焼肉", "アジア", "各国料理",
+  "カラオケ", "バー", "ラーメン", "カフェ", "その他",
+  "お好み焼き", "韓国"
+];
+
+const genreKeys = [
+  "G001", "G002", "G003", "G004", "G005",
+  "G006", "G007", "G008", "G009", "G010",
+  "G011", "G012", "G013", "G014", "G015",
+  "G016", "G017"
+];
 
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
